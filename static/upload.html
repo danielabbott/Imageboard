@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Upload</title>
+
+	<!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+
+	<link rel="stylesheet" href="/s/style.css">
+</head>
+
+<body>
+	<header class="centre"><a href="/"><h1>Imageboard</h1></a></header>
+	<article>
+		<div class="column">
+			<h2>Submit Image</h2>
+			<form action="/upload" class="form_grid" method="post" enctype="multipart/form-data">
+				Title:<input type="text" name="title" required maxlength="100" size="30">
+				File:<input type="file" name="file" required accept="image/png, image/jpeg, image/webp">
+			    <input type="submit" value="Upload Image" class="form_grid_full_row"/>
+			</form> 
+			<p class="grey">Maximum file size is 5MiB<br>Supported file formats are PNG, JPEG, and WEBP.</p>
+		</div>
+	</article>
+	<footer>Imageboard website Copyright ???? 2023</footer>
+</body>
+</html>

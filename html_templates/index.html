@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{.Title}}</title>
+
+	<!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+
+	<link rel="stylesheet" href="/s/style.css">
+</head>
+
+<body>
+	<header class="centre"><a href="/"><h1>Imageboard</h1></a></header>
+	<article>
+		<div class="centre">
+			<form id="upload_button_form" action="/upload">
+			    <input type="submit" value="Upload" />
+			</form> 
+			<form action="/">
+				<input type="text" placeholder="Search by tag(s).." name="search" required value={{.SearchBoxText}}>
+				<button>Search</button>
+			</form>
+		</div>
+		{{.NoResults}}
+		<div class="centre">
+			<div id="image_thumb_grid">
+				{{.Images}}
+			</div>
+		</div>
+		<div class="centre">
+			{{.NextButton}}
+		</div>
+	</article>
+	<footer>Imageboard website Copyright ???? 2023</footer>
+</body>
+</html>

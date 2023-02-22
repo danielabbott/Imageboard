@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{.Title}}</title>
+
+	<!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+
+	<link rel="stylesheet" href="/s/style.css">
+</head>
+
+<body>
+	<header class="centre"><a href="/"><h1>Imageboard</h1></a></header>
+
+	<article id="image_page_outer">
+        <h2 id="image_title">{{.Title}}</h2>
+        
+        <div id="image_page_inner">
+            <div id="image_frame">
+                <img src={{.Src}} id="image_view">
+				<form class="centre" action="/delete_image" method="POST">
+			    	<input type="hidden" name="id" value="{{.ImageID}}" />
+			    	<input type="submit" value="Delete Image" />
+				</form>
+            </div>
+
+            <div>
+                <span class="centre">Tags</span>
+				<form class="centre form_grid" action="/add_tag" method="POST">
+					<input type="text" placeholder="Tag to be added.." name="tag" maxlength="80" />
+					<input type="hidden" name="image_id" value="{{.ImageID}}" />
+			    	<input type="submit" value="Add Tag" />
+				</form>
+                <div id="tags_list">
+					{{$ImageID := .ImageID}}
+                    {{range $i, $x := .Tags }}
+                    <div class="image_tag"><a href={{$x.URL}} class="image_tag_link">{{$x.Name}}</a>
+						<form action="/remove_tag" method="POST" class="image_tag_delete">
+							<input type="hidden" name="image_id" value="{{$ImageID}}" />
+							<input type="hidden" name="tag" value="{{$x.NameEscaped}}" />
+							<input type="submit" value="x" />
+						</form>
+					</div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+	</article>
+
+	<footer>Imageboard website Copyright ???? 2023</footer>
+</body>
+</html>
